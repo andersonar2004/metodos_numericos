@@ -1,0 +1,5 @@
+load 'bissecao.rb'
+load 'falsa_posicao.rb'
+load 'ponto_fixo.rb'
+load 'newton_raphson.rb'
+load 'secante.rb'
