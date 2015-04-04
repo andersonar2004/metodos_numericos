@@ -32,7 +32,8 @@ def newton_raphson(x0, erro, imax, funcaog = funcao)
     if (x!=0)
       ea = ((x.to_f - xtemp.to_f)/ x.to_f ).abs  * 100
     end
-    puts "#{i}\t#{x}\t#{fx}\t#{flx}\t#{ea}"
+    #puts "#{i}\t#{x}\t#{fx}\t#{flx}\t#{ea}"
+    $out.puts "#{i}\t#{xtemp}\t#{x}\t#{ea}" if $out!=nil
   end
   return {raiz: x, iteracoes: i}
 end
@@ -40,21 +41,23 @@ end
 
 f = File.new('newton_raphson.out', 'w')
 # Calcula as 5 primeiras raizes
+# Bissecao a = 1
+f.puts "Newton Raphson a = 1 e = #{EA}, imax #{IMAX}"
+5.times do |i|
+  intervar = intervalo(i)[0]
+  result = newton_raphson((intervar), EA, IMAX, $funcaon)
+  f.puts "(#{intervar}) #{result[:raiz]} iteracoes #{result[:iteracoes]}"
+end
+f.puts ""
 # Bissecao a = 2
 f.puts "Newton Raphson a = 2 e = #{EA}, imax #{IMAX}"
 5.times do |i|
   intervar = intervalo2(i)[0]
-  result = newton_raphson((intervar), EA, IMAX, funcaof = funcao2)
+  result = newton_raphson((intervar), EA, IMAX, $funcaon2)
   f.puts "(#{intervar}) #{result[:raiz]} iteracoes #{result[:iteracoes]}"
 end
 f.puts ""
-# Bissecao a = 1
-f.puts "Newton Raphson a = 1 e = #{EA}, imax #{IMAX}"
-5.times do |i|
-  intervar = intervalo(i)[1]
-  result = newton_raphson((intervar), EA, IMAX, funcaof = funcao)
-  f.puts "(#{intervar}) #{result[:raiz]} iteracoes #{result[:iteracoes]}"
-end
+
 f.close
 
 

@@ -11,8 +11,8 @@ def intervalo(n)
   
   s = 0
   s = n*PI+(26+n.to_f)/20 if (n>0)
-  #puts "=> #{s-0.1} - #{s+0.1} "
-  [s-0.1, s+0.1 ]
+  #puts "f(x) => #{s-0.1} - #{s+0.1} "
+  [s-0.15, s+0.05 ]
 end
 
 # intervalo para funcao 2
@@ -30,7 +30,7 @@ def intervalo2(n)
     aux = -(2*(x-6))/x
     s = s + 1 + ((aux.to_f+14)/25)
   end if n > 0
-  # puts "=> #{s-0.1} - #{s+0.1} "
+  #puts "g(x) => #{s-0.1} - #{s+0.1} "
   [s-0.1, s+0.1 ]
 end
 
@@ -43,3 +43,42 @@ end
 $funcao2 = Proc.new do |x|
   x.to_f/2 - Math.tan(2*x)
 end
+
+$funcaon = Proc.new do |x|
+  fx = x.to_f - Math.tan(x)
+  flx = 1 - (1 / Math.cos(x.to_f)) ** 2 # derivada da funcao
+  {fx: fx, flx:  flx}
+end
+
+$funcaon2 = Proc.new do |x|
+  fx = x.to_f/2 - Math.tan(2*x)
+  flx = (1.to_f / 2).to_f - (2 * (1/Math.cos(2*x.to_f)) ** 2 ) # derivada da funcao
+  {fx: fx, flx:  flx}
+end
+
+
+$funcaopf = Proc.new do |x|
+  fx = x.to_f - Math.tan(x)
+  gx = 1 - (1.to_f/Math.cos(x.to_f)) ** 2 # derivada da funcao
+  x.to_f - (fx/gx)
+end
+
+$funcaopf2 = Proc.new do |x|
+  fx = x.to_f/2 - Math.tan(2*x)
+  gx = (1.to_f / 2).to_f - (2 * ((1.to_f/Math.cos(2*x.to_f)) ** 2) ) # derivada da funcao
+  x.to_f - (fx/gx)
+end
+
+# 5.times do |x|
+#   intervalo = intervalo(x)
+#   a = intervalo[0]
+#   b = intervalo[1]
+#   puts "#{$funcao.call(a)} |  #{$funcao.call(b)}  "
+# end
+
+# 5.times do |x|
+#   intervalo = intervalo2(x)
+#   a = intervalo[0]
+#   b = intervalo[1]
+#   puts "#{$funcao2.call(a)} |  #{$funcao2.call(b)}  "
+# end

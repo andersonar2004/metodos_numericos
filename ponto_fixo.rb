@@ -31,7 +31,8 @@ def ponto_fixo(x0, erro, imax, funcaog)
     if (x!=0)
       ea = ((x.to_f - xtemp.to_f)/ x.to_f ).abs  * 100
     end
-    puts "#{i}\t#{x}\t#{ea}"
+    #puts "#{i}\t#{x}\t#{ea}"
+    $out.puts "#{i}\t#{xtemp}\t#{x}\t#{ea}" if $out!=nil
   end
 
   return {raiz: x, iteracoes: i}

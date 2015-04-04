@@ -28,10 +28,10 @@ def secante(x0, x1, erro, imax, funcaog = funcao)
     x0 = x1
     x1 = x
     
-	
-	puts "#{i}\t#{x}\t#{x0}\t#{x1}\t#{ea}"
-   # puts "#{i}\t#{x}\t#{f1}\t#{ea}"
+  # puts "#{i}\t#{x}\t#{f1}\t#{ea}"
+  $out.puts "#{i}\t#{x0}\t#{x1}\t#{ea}" if $out!=nil
   end
+  $out.puts "" if $out!=nil
   return {raiz: x, iteracoes: i}
 end
 

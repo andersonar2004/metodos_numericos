@@ -37,6 +37,7 @@ def falsa_posicao(xl, xu, erro, imax, funcaof = funcao)
       fu = fx
     end
     #puts "#{i}\t#{xl}\t#{xu}\t#{fl}\t#{fu}\t#{ea}"
+    $out.puts  "#{i}\t#{xl}\t#{xu}\t#{x}\t#{ea}" if $out!=nil
   end
   return {raiz: x, iteracoes: i}
 end

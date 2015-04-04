@@ -11,7 +11,7 @@ def bissecao(xl, xu, erro, imax, funcaof = funcao)
   x = xl.to_f
   i = 0
   ea = 100
-  fl = funcaof.call(xl)
+  fl = funcaof.call(xl) 
   while( ea > erro && i<imax ) 
     xtemp = x
     x = (xl.to_f + xu.to_f) / 2
@@ -27,7 +27,7 @@ def bissecao(xl, xu, erro, imax, funcaof = funcao)
       xl = x
       fl = fx
     end
-     puts " #{i} \t ea #{ea} \t xl #{xl} -> xu #{xu} "
+    $out.puts  "#{i}\t#{xl}\t#{xu}\t#{x}\t#{ea}" if $out!=nil
   end
   return {raiz: x, iteracoes: i}
 end
